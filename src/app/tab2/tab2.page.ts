@@ -10,7 +10,7 @@ import { Quotes } from 'src/assets/data/quotes.interface';
   standalone: false,
 })
 export class Tab2Page implements OnInit{
-  quoteCollection: {category: string, quotes: Quotes[]}[];
+  quoteCollection: {category: string, quotes: Quotes[], icon: string;}[];
   constructor(
     private alertController: AlertController
   ) {}
@@ -30,5 +30,6 @@ export class Tab2Page implements OnInit{
       ]
     });
     await alert.present();
+    
   }
 }
