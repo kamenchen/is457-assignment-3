@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import quotes from 'src/assets/data/quotes';
 import { Quotes } from 'src/assets/data/quotes.interface';
+import { QuotesService } from '../service/quotes';
 
 @Component({
   selector: 'app-tab2',
@@ -9,10 +10,11 @@ import { Quotes } from 'src/assets/data/quotes.interface';
   styleUrls: ['tab2.page.scss'],
   standalone: false,
 })
-export class Tab2Page implements OnInit{
+export class Tab2Page implements OnInit {
   quoteCollection: {category: string, quotes: Quotes[], icon: string;}[];
   constructor(
-    private alertController: AlertController
+    private alertController: AlertController,
+    private quoteService: QuotesService
   ) {}
 
   ngOnInit(){
@@ -25,8 +27,8 @@ export class Tab2Page implements OnInit{
       subHeader: 'Are you sure?',
       message: 'Are you sure you want to add the quote?',
       buttons: [
-        {text: 'Confirm',},
-        {text: 'Not Confirm',}
+        {text: 'Confirm', handler: () => {this.quoteService.addQuoteToFavorite(SelectedQuote);},},
+        {text: 'Not Confirm', role: 'cancel', handler: () => {console.log('Canceled');},}
       ]
     });
     await alert.present();
