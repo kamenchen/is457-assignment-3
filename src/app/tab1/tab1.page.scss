@@ -1,0 +1,6 @@
+.author {
+  font-weight: bold;
+  text-align: right;
+  color: black;
+  &:before {content: '-';}
+}

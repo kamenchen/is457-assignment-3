@@ -7,11 +7,15 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-list >
-    <ion-item>
-      <ion-label>
-        
-      </ion-label>
-    </ion-item>
-  </ion-list>
+  <ion-card *ngFor="let quote of quotes">
+    <ion-card-content>
+      <h2>{{quote.text}}</h2>
+      <h2 class="author">{{quote.person}}</h2>
+    </ion-card-content>
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <ion-button fill="clear" color="danger" (click)="onRemoveFromFavorite(quote)">Unfavorite</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
 </ion-content>

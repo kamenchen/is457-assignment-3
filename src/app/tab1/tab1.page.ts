@@ -13,5 +13,11 @@ export class Tab1Page {
   constructor(private quoteService: QuotesService) {}
   ionViewWillEnter() {
     this.quotes = this.quoteService.getFavoriteQuote();
+    console.log(this.quotes);
+  }
+  onRemoveFromFavorite(quote: Quotes) {
+    this.quoteService.removeQuoteFromFavorite(quote);
+    console.log(quote);
+    this.quotes = this.quoteService.getFavoriteQuote();
   }
 }
